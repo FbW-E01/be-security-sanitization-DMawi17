@@ -1,10 +1,14 @@
-import { body } from "express-validator";
+import { body, check } from "express-validator";
 
 const rules = [
-    body("country").isLength({ min: 2 }),
-    body("message").isLength({ min: 2 }),
-    body("name").isLength({ min: 2 }),
-    body("telephone").isLength({ min: 2 }),
+    body("name").isLength({ min: 3 }).trim().isAlpha(),
+    body("email")
+        .isEmail()
+        .normalizeEmail()
+        .withMessage("Must Be a Valid Email Address"),
+    body("telephone").isLength({ min: 2 }).isNumeric(),
+    body("country"),
+    body("message").isLength({ max: 100 }),
 ];
 
 export default rules;
