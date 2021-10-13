@@ -14,7 +14,7 @@ const read = async (req, res) => {
         const contacts = await Contact.find().select("-id");
         res.json(contacts);
     } catch (err) {
-        console.dir(error.message, { colors: true });
+        res.status(400).json({ error: err.message });
     }
 };
 
