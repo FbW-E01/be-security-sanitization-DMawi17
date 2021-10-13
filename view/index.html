@@ -368,12 +368,19 @@
                     try {
                         const res = await fetch(backend + "/contact", opts);
                         const result = await res.json();
+                        // ***
+
+                        // result.errors.map((a) => console.log(a.msg));
+
+                        // ***
                         if (result._id) {
                             location.reload();
                         } else {
-                            alert(
-                                "A strange looking response was encountered. Your message might not be saved..."
-                            );
+                            result.errors.map((a) => alert(a.msg));
+
+                            // alert(
+                            //     "A strange looking response was encountered. Your message might not be saved..."
+                            // );
                         }
                     } catch (e) {
                         console.error(e);
