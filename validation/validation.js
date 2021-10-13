@@ -2,24 +2,24 @@ import { body, check } from "express-validator";
 
 const rules = [
     body("name")
-        .isLength({ min: 3 })
-        .withMessage("min 3 char")
+        .isLength({ min: 2 })
+        .withMessage("min 2 char")
         .trim()
         .isAlpha()
-        .withMessage("alphabets only!"),
+        .withMessage("Use only letters only please!"),
     body("email")
         .isEmail()
         .normalizeEmail()
-        .withMessage("Must Be a Valid Email Address"),
+        .withMessage("Must be a valid email address"),
     body("telephone")
-        .isLength({ min: 2 })
-        .withMessage("min length 2")
+        .isLength({ min: 6 })
+        .withMessage("Minimum of 6 characters!")
         .isNumeric()
-        .withMessage("only numbers"),
+        .withMessage("User only numbers please!"),
     body("country"),
     body("message")
         .isLength({ max: 100 })
-        .withMessage("max length of 100 char reached!"),
+        .withMessage("Maximum length of 100 characters reached!"),
 ];
 
 export default rules;

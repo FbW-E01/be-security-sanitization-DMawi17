@@ -368,11 +368,7 @@
                     try {
                         const res = await fetch(backend + "/contact", opts);
                         const result = await res.json();
-                        // ***
 
-                        // result.errors.map((a) => console.log(a.msg));
-
-                        // ***
                         if (result._id) {
                             location.reload();
                         } else {
